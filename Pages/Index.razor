@@ -1,0 +1,30 @@
+﻿@page "/"
+@using RiotSharp.Misc;
+@inject NavigationManager Navigation
+
+<PageTitle>Index</PageTitle>
+
+
+<div class="container-fluid h-100">
+    <div class="row justify-content-center align-items-center h-100">
+        <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                <div class="form-group">
+                    <input class="form-control form-control-lg" placeholder="SrCruSheR" id="summonerN" @bind="summonerName" type="text"><br />
+                <select class="form-select" aria-label="Select your Region" @bind="selectedRegion">
+                        <option selected>Select Region</option>
+                        <option value="@Region.Euw">EUW</option>
+                        <option value="@Region.Eune">EUNE</option>
+                        <option value="@Region.Na">NA</option>
+                        <option value="@Region.Ru">RU</option>
+                        <option value="@Region.Oce">Oce</option>
+                        <option value="@Region.Jp">JP</option>
+                        <option value="@Region.Ru">RU</option>
+                        <option value="@Region.Tr">TR</option>
+                    </select>
+                </div><br />
+                <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="btn btn-primary" type="button" @onclick='() => SearchPlayer(summonerName, selectedRegion)'>Search</button>
+                </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+﻿@page "/summoner"
+<PageTitle>LOLStats - Summoner</PageTitle>
+@using Microsoft.AspNetCore.Components.QuickGrid
+
+<div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+    <div class="card p-4">
+        <div class=" image d-flex flex-column justify-content-center align-items-center">
+            <button class="btn btn-secondary"> <img src="@IconURL" height="100" width="100" /></button>
+            <span class="name mt-3">@SummonerName</span>
+            <div class="d-flex flex-row justify-content-center align-items-center mt-3"> <span class="number">@SummonerLevel <span class="follow">LEVEL</span></span>
+            </div>
+            <div class=" d-flex mt-2">
+                <a href="https://www.op.gg/summoners/@regionX/@SummonerName">Visit OP.GG Profile</a>
+            </div>
+            <div class="text mt-3"> <span>@SummonerName Is a @rank in @queueType with @wins wins and @losses losses, and @rank2 in @queueType2 with @wins2 wins and @losses2 losses!<br></span> </div>
+        </div>
+    </div>
+
+<div class="grid">
+    <QuickGrid Items="@Champs.AsQueryable()" ResizableColumns="true" Pagination="@pagination">
+        <PropertyColumn Property="@(c => GetChampionNameById(c.ChampionId.ToString()))" Sortable="true">
+        </PropertyColumn>
+        <PropertyColumn Property="@(c => c.ChampionLevel)" Sortable="true" Align="Align.Right" />
+        <PropertyColumn Property="@(c => c.ChampionPoints)" Sortable="true" Align="Align.Right" />
+        <PropertyColumn Property="@(c => c.ChestGranted)" Sortable="true" Align="Align.Right" />
+        <PropertyColumn Property="@(c => c.LastPlayTime)" Sortable="true" Align="Align.Right" />
+    </QuickGrid>
+</div>
+    <Paginator Value="@pagination" />
+</div>
+
+
+
